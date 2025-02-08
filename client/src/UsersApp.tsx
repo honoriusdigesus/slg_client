@@ -1,7 +1,10 @@
 import UserForm from './components/UserForm';
 import UsersList from './components/UsersList';
 
-type Props = {}
+
+const handlerAddUser = ({user}) => {
+  console.log('Desde el UsersApp '+user.username);
+}
 
 const initialUser = [
   {
@@ -12,17 +15,20 @@ const initialUser = [
   }
 ];
 
-const UsersApp = (props: Props) => {
+const UsersApp = () => {
+
+
+
   return (
     <>
     <h1 className='text-4xl'>Users App</h1>
 
     <div className='grid grid-cols-2 gap-4'>
       <div>
-        <UserForm />
+        <UserForm handlerAddUser={handlerAddUser}/>
       </div>
       <div>
-        <UsersList users={initialUser}/>
+        <UsersList users={initialUser} />
       </div>
     </div>
     </>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const UserForm = () => {
+const UserForm = ({handlerAddUser}) => {
 
   const [userForm, setUserForm] = useState({
     username: '',
@@ -21,7 +21,14 @@ const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
 const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault()
-  console.log(userForm)
+  //Validaciones de campos
+  if (!userForm.username || !userForm.email || !userForm.password) {
+    console.log('Invalid input')
+    alert('Debe completar los campos')
+    return
+  }
+  //console.log(userForm)
+handlerAddUser({user: userForm})
 
   // Reset form
   setUserForm({
